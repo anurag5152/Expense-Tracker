@@ -1,1 +1,1 @@
-A web application for tracking expenses, allowing user signup, login / Guest login, and expense management with visual summaries with a pie chart. Built with HTML, CSS, JavaScript, Node.js, and Express.js
+A web application for tracking expenses, allowing user signup, login / Guest login, and expense management with visual summaries i.e pie chart. Built with HTML, CSS, JavaScript, Node.js, and Express.js
