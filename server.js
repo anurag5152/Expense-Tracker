@@ -9,8 +9,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const mongoURI = process.env.MONGO_URI;
+
 mongoose
-  .connect("mongodb+srv://anurag5152kumar:8TnEDYNU2NOoR5qO@cluster0.qvk92x5.mongodb.net/", {
+  .connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -27,7 +28,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
