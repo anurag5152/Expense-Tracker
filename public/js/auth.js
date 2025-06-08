@@ -1,9 +1,7 @@
-// Determine which page we're on: signup.html or login.html
 const signupForm = document.getElementById('signupForm');
 const loginForm = document.getElementById('loginForm');
 
 if (signupForm) {
-  // SIGNUP PAGE LOGIC
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
@@ -23,7 +21,6 @@ if (signupForm) {
       if (!res.ok) {
         errorP.textContent = data.msg || 'Signup failed.';
       } else {
-        // Save token & user to localStorage
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         window.location.href = 'main.html';
@@ -36,7 +33,6 @@ if (signupForm) {
 }
 
 if (loginForm) {
-  // LOGIN PAGE LOGIC
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value.trim();
@@ -55,7 +51,6 @@ if (loginForm) {
       if (!res.ok) {
         errorP.textContent = data.msg || 'Login failed.';
       } else {
-        // Save token & user to localStorage
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         window.location.href = 'main.html';

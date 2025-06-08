@@ -1,8 +1,6 @@
-// Redirect to login if not authenticated
 const token = localStorage.getItem('token');
 if (!token) window.location.href = 'login.html';
 
-// Logout handler
 document.getElementById('logoutBtn').addEventListener('click', () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
@@ -15,7 +13,6 @@ const totalExpenseDiv = document.getElementById('totalExpense');
 const expenseError = document.getElementById('expenseError');
 let pieChart;
 
-// Add expense
 expenseForm.addEventListener('submit', async e => {
   e.preventDefault();
   expenseError.textContent = '';
@@ -48,7 +45,6 @@ expenseForm.addEventListener('submit', async e => {
   }
 });
 
-// Fetch, render, chart, total
 async function fetchExpenses() {
   try {
     const res = await fetch('/api/expenses', {
@@ -112,5 +108,4 @@ function updateTotal(expenses) {
   totalExpenseDiv.textContent = `Total Expense: ₹ ${sum.toFixed(2)}`;
 }
 
-// Initial load
 fetchExpenses();
