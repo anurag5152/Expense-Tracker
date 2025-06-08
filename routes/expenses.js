@@ -4,9 +4,6 @@ const auth = require('../middleware/auth');
 
 const Expense = require('../models/expense');
 
-// @route   POST /api/expenses
-// @desc    Add a new expense
-// @access  Private
 router.post('/', auth, async (req, res) => {
   const { amount, category, date, description } = req.body;
   if (!amount || !category || !date) {
@@ -30,9 +27,6 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// @route   GET /api/expenses
-// @desc    Get all expenses for logged-in user
-// @access  Private
 router.get('/', auth, async (req, res) => {
   try {
     const expenses = await Expense.find({ user: req.user.id }).sort({ date: -1 });
@@ -43,16 +37,12 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// @route   DELETE /api/expenses/:id
-// @desc    Delete an expense by ID
-// @access  Private
 router.delete('/:id', auth, async (req, res) => {
   try {
     const expense = await Expense.findById(req.params.id);
     if (!expense) {
       return res.status(404).json({ msg: 'Expense not found.' });
     }
-    // Ensure user owns this expense
     if (expense.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized.' });
     }
