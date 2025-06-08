@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Expense Tracker</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <h1>Expense Tracker</h1>
+    <button id="logoutBtn" class="btn small">Logout</button>
+  </nav>
+
+  <div class="main-container">
+    <!-- 1) Add New Expense Panel -->
+    <div class="panel">
+      <h2>Add New Expense</h2>
+      <form id="expenseForm">
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="0.00" step="0.01" required/>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="">Select category</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Utilities</option>
+            <option>Entertainment</option>
+            <option>Others</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required/>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Optional"/>
+        </div>
+        <button type="submit">Add Expense</button>
+        <p id="expenseError" class="error-msg"></p>
+      </form>
+    </div>
+
+    <!-- 2) Your Expenses Panel -->
+    <div class="panel">
+      <h2>Your Expenses</h2>
+      <div id="expenseList"></div>
+    </div>
+
+    <!-- 3) Summary Panel -->
+    <div class="panel">
+      <h2>Summary (Category-wise)</h2>
+      <canvas id="pieChart" width="400" height="400"></canvas>
+      <div id="totalExpense">Total Expense: ₹ 0.00</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
